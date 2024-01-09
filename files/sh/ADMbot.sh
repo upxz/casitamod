@@ -1,34 +1,15 @@
 #!/bin/bash
-#26/01/2021
-clear
-clear
-# DIRECCIONES DE CARPETAS Y ARCHIVOS 
 
-SCPdir="/etc/VPS-MX" && [[ ! -d ${SCPdir} ]] && exit 1
-SCPusr="${SCPdir}/controlador" && [[ ! -d ${SCPusr} ]] && mkdir ${SCPusr}
-SCPfrm="${SCPdir}/herramientas" && [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
-SCPinst="${SCPdir}/protocolos" && [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
-SCPidioma="${SCPdir}/idioma" && [[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
-mkdir -p /etc/BOT &>/dev/null
-mkdir -p /etc/BOT-C &>/dev/null
-mkdir -p /etc/BOT-A &>/dev/null
-mkdir -p /etc/BOT-GEN &>/dev/null
-mkdir -p /etc/BOT-C2 &>/dev/null
-mkdir -p /etc/BOT-TEMP &>/dev/null
 USRdatacredi="/etc/BOT-C2/creditos"
-
 ##### SERVIDOR TELEGRAM PERSONAL
 [[ $(dpkg --get-selections|grep -w "jq"|head -1) ]] || apt-get install jq -y &>/dev/null
 [[ ! -e "/bin/ShellBot.sh" ]] && wget -O /bin/ShellBot.sh https://raw.githubusercontent.com/lacasitamx/BOT/master/ShellBot.sh &> /dev/null
 [[ -e /etc/texto-bot ]] && rm /etc/texto-bot
-
 ##### VERIFICANDO  PAQUETES PRIMARIOS
-
 [[ $(dpkg --get-selections|grep -w "jq"|head -1) ]] || apt-get install jq -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "vnstat"|head -1) ]] || apt-get install vnstat -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "vnstati"|head -1) ]] || apt-get install vnstati -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "nmap"|head -1) ]] || apt-get install nmap -y &>/dev/null
-
 ## INGRESO DE TOKEN BOT
 id="$1"
 [[ -z $1 ]] && exit
